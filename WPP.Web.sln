@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPP.Web", "WPP.Web\WPP.Web.csproj", "{BE08170D-3876-4FA7-B5C6-A193162A20C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPP.Domain", "WPP.Domain\WPP.Domain.csproj", "{FC49B669-18EA-4F32-BD6F-2539629F513D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE08170D-3876-4FA7-B5C6-A193162A20C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE08170D-3876-4FA7-B5C6-A193162A20C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE08170D-3876-4FA7-B5C6-A193162A20C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE08170D-3876-4FA7-B5C6-A193162A20C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D6747EE-1CBC-4C99-B55A-A7D387F3F683}
+	EndGlobalSection
+EndGlobal
