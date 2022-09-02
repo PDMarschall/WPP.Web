@@ -10,7 +10,7 @@ namespace WPP.Domain.Models
     {
         public override ValidationStatus Validate(Password password)
         {
-            throw new NotImplementedException();
+            return ValidationStatus.Untested;
         }
     }
 }

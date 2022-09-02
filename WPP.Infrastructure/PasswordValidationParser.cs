@@ -26,7 +26,7 @@ namespace WPP.Infrastructure
         private Password GetPasswordFromRegex(Match match)
         {
             Password tempPassword = new Password(match.Groups["PasswordText"].Value,
-                                    new ValidationInfo(Convert.ToInt32(match.Groups["Minumum"].Value),
+                                    new ValidationInfo(Convert.ToInt32(match.Groups["Minimum"].Value),
                                                     Convert.ToInt32(match.Groups["Maximum"].Value),
                                                     Convert.ToChar(match.Groups["ConstraintCharacter"].Value)));
 
