@@ -28,13 +28,10 @@ namespace WPP.Domain.Models
             char[] temp = pwordText.ToCharArray();
 
             if (_indexOne >= 0)
-            {
                 _occurrenceOne = (temp[_indexOne] == _constraintChar);
-            }
+
             if (_indexTwo <= temp.Length)
-            {
                 _occurrenceTwo = (temp[_indexTwo] == _constraintChar);
-            }
 
             return _occurrenceOne ^ _occurrenceTwo;
         }

@@ -28,9 +28,7 @@ namespace WPP.Domain.Models
             foreach (char element in pwordText)
             {
                 if (element == _constraintChar)
-                {
                     _occcurrence++;
-                }
             }
 
             return _occcurrence <= _maxOccurernce && _occcurrence >= _minOccurrence;
