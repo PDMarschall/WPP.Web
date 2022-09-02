@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WPP.Infrastructure;
 
 namespace WPP.Web
 {
@@ -24,6 +25,8 @@ namespace WPP.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<PasswordValidationParser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

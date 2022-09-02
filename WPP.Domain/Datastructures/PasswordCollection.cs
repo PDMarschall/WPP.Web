@@ -32,6 +32,11 @@ namespace WPP.Domain.Datastructures
             _passwordCollection.AddRange(passwords);
         }
 
+        public void Add(Password password)
+        {
+            _passwordCollection.Add(password);
+        }
+
         public void ValidateCollection()
         {
             if (Count > 0)

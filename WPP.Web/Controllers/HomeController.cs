@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WPP.Infrastructure;
 using WPP.Web.Models;
 
 namespace WPP.Web.Controllers
@@ -12,10 +13,12 @@ namespace WPP.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly PasswordValidationParser _reader;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, PasswordValidationParser reader)
         {
             _logger = logger;
+            _reader = reader;
         }
 
         public IActionResult Index()

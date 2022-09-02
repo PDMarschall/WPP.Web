@@ -9,11 +9,13 @@ namespace WPP.Domain.Models
     public class Password
     {
         public IValidationPolicy ValidationPolicy { get; set; }
-        public string PasswordText { get; }
+        public IValidationInfo ValidationInfo { get; set; }
+        public string PasswordText { get; set; }
 
-        public Password(string pwtext)
+        public Password(string pwtext, IValidationInfo info)
         {
-            PasswordText = pwtext;            
+            PasswordText = pwtext;
+            ValidationInfo = info;
         }
 
         public override string ToString()
@@ -23,7 +25,7 @@ namespace WPP.Domain.Models
 
         public string ToFullString()
         {
-            return $"{ValidationPolicy.Minimum}-{ValidationPolicy.Maximum} {ValidationPolicy.ConstraintCharacter}: {PasswordText}";
+            return $"{ValidationInfo.Minimum}-{ValidationInfo.Maximum} {ValidationInfo.ConstraintCharacter}: {PasswordText}";
         }
     }
 }
