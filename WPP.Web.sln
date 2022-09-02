@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPP.Web", "WPP.Web\WPP.Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPP.Domain", "WPP.Domain\WPP.Domain.csproj", "{FC49B669-18EA-4F32-BD6F-2539629F513D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPP.Infrastructure", "WPP.Infrastructure\WPP.Infrastructure.csproj", "{F2DE2302-716F-42DE-9845-B1515AF74007}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC49B669-18EA-4F32-BD6F-2539629F513D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2DE2302-716F-42DE-9845-B1515AF74007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2DE2302-716F-42DE-9845-B1515AF74007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2DE2302-716F-42DE-9845-B1515AF74007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2DE2302-716F-42DE-9845-B1515AF74007}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

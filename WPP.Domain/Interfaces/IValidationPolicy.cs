@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WPP.Domain.Enums;
+using WPP.Domain.Models;
 
 namespace WPP.Domain.Interfaces
 {
@@ -9,6 +10,6 @@ namespace WPP.Domain.Interfaces
     {
         public ValidationStatus ValidationStatus { get; }
 
-        public ValidationStatus Validate();
+        public ValidationStatus Validate(Password password);
     }
 }
