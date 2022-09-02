@@ -20,7 +20,27 @@ namespace WPP.ConsoleTester
             RunParser();
 
             _passwordCollection.SetValidationPolicy(new ValidationPolicy_One());
-            IEnumerable<Password> valid = _passwordCollection.ReturnValidPasswords();
+            _passwordCollection.ValidateCollection();
+
+            IEnumerable<Password> validOne = _passwordCollection.ReturnValidPasswords();
+            IEnumerable<Password> invalidOne = _passwordCollection.ReturnInvalidPasswords();
+
+            Console.WriteLine("Policy One");
+            Console.WriteLine($"Count of valid passwords: {_passwordCollection.ValidCount}");
+            Console.WriteLine($"Count of invalid passwords: {_passwordCollection.InvalidCount}");
+            Console.WriteLine();
+
+
+            _passwordCollection.SetValidationPolicy(new ValidationPolicy_Two());
+            _passwordCollection.ValidateCollection();
+
+            IEnumerable<Password> validTwo = _passwordCollection.ReturnValidPasswords();
+            IEnumerable<Password> invalidTwo = _passwordCollection.ReturnInvalidPasswords();
+
+            Console.WriteLine("Policy Two");
+            Console.WriteLine($"Count of valid passwords: {_passwordCollection.ValidCount}");
+            Console.WriteLine($"Count of invalid passwords: {_passwordCollection.InvalidCount}");
+            Console.WriteLine();
         }
 
         private static void ReadFile()

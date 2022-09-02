@@ -7,10 +7,10 @@ using WPP.Domain.Interfaces;
 namespace WPP.Domain.Models
 {
     public class Password
-    {
-        public IValidationPolicy ValidationPolicy { get; set; }
+    {        
         public IValidationInfo ValidationInfo { get; set; }
         public string PasswordText { get; set; }
+        public bool Valid { get; set; }
 
         public Password(string pwtext, IValidationInfo info)
         {

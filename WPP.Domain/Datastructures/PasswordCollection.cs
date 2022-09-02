@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WPP.Domain.Enums;
+using WPP.Domain.Helpers;
 using WPP.Domain.Interfaces;
 using WPP.Domain.Models;
 
 namespace WPP.Domain.Datastructures
 {
-    public class PasswordCollection
+    public class PasswordCollection :IEnumerable
     {
         private List<Password> _passwordCollection = new List<Password>();
+        private PasswordValidator _validator = new PasswordValidator();
         private bool _hasBeenValidated = false;
-        private int _validCount;
-        private int _invalidCount;
+        private int _validCount = 0;
+        private int _invalidCount = 0;
 
         public bool HasBeenValidated => _hasBeenValidated;
         public int Count => _passwordCollection.Count;
@@ -47,14 +49,7 @@ namespace WPP.Domain.Datastructures
 
         public void SetValidationPolicy(IValidationPolicy valpol)
         {
-            if (Count > 0)
-            {
-                foreach (Password pword in _passwordCollection)
-                {
-                    pword.ValidationPolicy = valpol;
-                }
-                _hasBeenValidated = true;
-            }
+            _validator.ValidationPolicy = valpol;
         }
 
         public void ValidateCollection()
@@ -63,7 +58,7 @@ namespace WPP.Domain.Datastructures
             {
                 foreach (Password pword in _passwordCollection)
                 {
-                    pword.ValidationPolicy.Validate(pword);
+                    _validator.ValidationPolicy.Validate(pword);
                 }
                 _hasBeenValidated = true;
             }
@@ -71,16 +66,21 @@ namespace WPP.Domain.Datastructures
 
         public IEnumerable<Password> ReturnValidPasswords()
         {
-            IEnumerable<Password> temp = _passwordCollection.FindAll(p => p.ValidationPolicy.ValidationStatus == ValidationStatus.Valid);
+            IEnumerable<Password> temp = _passwordCollection.FindAll(p => p.Valid);
             _validCount = temp.Count();
             return temp;
         }
 
         public IEnumerable<Password> ReturnInvalidPasswords()
         {
-            IEnumerable<Password> temp = (IEnumerable<Password>)_passwordCollection.Select(p => p.ValidationPolicy.ValidationStatus == ValidationStatus.Invalid);
+            IEnumerable<Password> temp = _passwordCollection.FindAll(p => !p.Valid);
             _invalidCount = temp.Count();
             return temp;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return ((IEnumerable)_passwordCollection).GetEnumerator();
         }
     }
 }
