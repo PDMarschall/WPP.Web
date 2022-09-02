@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WPP.Domain.Enums;
 using WPP.Domain.Models;
 
 namespace WPP.Domain.Datastructures
@@ -9,12 +10,18 @@ namespace WPP.Domain.Datastructures
     public class PasswordCollection
     {
         private List<Password> _passwordCollection = new List<Password>();
+        private bool _hasBeenValidated = false;
+
+        public bool HasBeenValidated => _hasBeenValidated;
         public int Count => _passwordCollection.Count;
+        public int ValidCount => _passwordCollection.Select(p => p.ValidationPolicy.ValidationStatus == ValidationStatus.Valid).Count();
+        public int InvalidCount => _passwordCollection.Select(p => p.ValidationPolicy.ValidationStatus == ValidationStatus.Invalid).Count();
 
         public PasswordCollection()
         {
 
         }
+
         public PasswordCollection(Password password)
         {
             _passwordCollection.Add(password);
@@ -27,20 +34,24 @@ namespace WPP.Domain.Datastructures
 
         public void ValidateCollection()
         {
-            foreach (Password pword in _passwordCollection)
+            if (Count > 0)
             {
-                pword.ValidationPolicy.Validate(pword);
+                foreach (Password pword in _passwordCollection)
+                {
+                    pword.ValidationPolicy.Validate(pword);
+                }
+                _hasBeenValidated = true;
             }
         }
 
-        public IEnumerable<Password> ReturnValidatPasswords()
+        public IEnumerable<Password> ReturnValidPasswords()
         {
-            return (IEnumerable<Password>)_passwordCollection.Select(x => x.ValidationPolicy.ValidationStatus == Enums.ValidationStatus.Valid);
+            return (IEnumerable<Password>)_passwordCollection.Select(p => p.ValidationPolicy.ValidationStatus == ValidationStatus.Valid);
         }
 
-        public IEnumerable<Password> ReturnInvalidatPasswords()
+        public IEnumerable<Password> ReturnInvalidPasswords()
         {
-            return (IEnumerable<Password>)_passwordCollection.Select(x => x.ValidationPolicy.ValidationStatus == Enums.ValidationStatus.Invalid);
+            return (IEnumerable<Password>)_passwordCollection.Select(p => p.ValidationPolicy.ValidationStatus == ValidationStatus.Invalid);
         }
     }
 }

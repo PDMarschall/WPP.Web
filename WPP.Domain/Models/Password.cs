@@ -15,5 +15,15 @@ namespace WPP.Domain.Models
         {
             PasswordText = pwtext;            
         }
+
+        public override string ToString()
+        {
+            return PasswordText;
+        }
+
+        public string ToFullString()
+        {
+            return $"{ValidationPolicy.Minimum}-{ValidationPolicy.Maximum} {ValidationPolicy.ConstraintCharacter}: {PasswordText}";
+        }
     }
 }

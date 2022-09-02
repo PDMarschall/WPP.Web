@@ -10,6 +10,10 @@ namespace WPP.Domain.Interfaces
     {
         public ValidationStatus ValidationStatus { get; }
 
+        public int Minimum { get; set; }
+        public int Maximum { get; set; }
+        public char ConstraintCharacter { get; set; }
+
         public ValidationStatus Validate(Password password);
     }
 }
