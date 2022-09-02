@@ -5,7 +5,7 @@ using WPP.Domain.Interfaces;
 
 namespace WPP.Domain.Models
 {
-    public class ValidationInfo : IValidationInfo
+    public class ValidationInfo
     {
         public int Minimum { get; set; }
         public int Maximum { get; set; }

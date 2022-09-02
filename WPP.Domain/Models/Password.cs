@@ -8,11 +8,11 @@ namespace WPP.Domain.Models
 {
     public class Password
     {        
-        public IValidationInfo ValidationInfo { get; set; }
+        public ValidationInfo ValidationInfo { get; set; }
         public string PasswordText { get; set; }
         public bool Valid { get; set; }
 
-        public Password(string pwtext, IValidationInfo info)
+        public Password(string pwtext, ValidationInfo info)
         {
             PasswordText = pwtext;
             ValidationInfo = info;
