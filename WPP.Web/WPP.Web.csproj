@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WPP.Domain\WPP.Domain.csproj" />
+    <ProjectReference Include="..\WPP.Infrastructure\WPP.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

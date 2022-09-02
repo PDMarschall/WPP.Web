@@ -8,7 +8,11 @@ namespace WPP.Domain.Models
 {
     public class ValidationPolicy_One : ValidationPolicy_Base
     {
-        public override ValidationStatus Validate()
+        public ValidationPolicy_One(int min, int max, char constraint) : base(min, max, constraint)
+        {
+        }
+
+        public override ValidationStatus Validate(Password password)
         {
             throw new NotImplementedException();
         }
