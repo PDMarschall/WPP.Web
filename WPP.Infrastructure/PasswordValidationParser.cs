@@ -10,7 +10,7 @@ namespace WPP.Infrastructure
     {
         private readonly Regex _passwordPolicyRegex = new Regex(@"^(?<Minimum>\d{1,3})-(?<Maximum>\d{1,3}) (?<ConstraintCharacter>\w): (?<PasswordText>\w+)$");
 
-        public PasswordCollection ParsePasswordPolicyFile(List<string> input)
+        public PasswordCollection ParsePasswordPolicyFile(IEnumerable<string> input)
         {
             PasswordCollection passwordCollection = new PasswordCollection();
 
