@@ -30,7 +30,6 @@ namespace WPP.ConsoleTester
             Console.WriteLine($"Count of invalid passwords: {_passwordCollection.InvalidCount}");
             Console.WriteLine();
 
-
             _passwordCollection.SetValidationPolicy(new ValidationPolicy_Two());
             _passwordCollection.ValidateCollection();
 
