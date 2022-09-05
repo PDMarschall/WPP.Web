@@ -9,7 +9,7 @@ using WPP.Domain.Models;
 
 namespace WPP.Domain.Datastructures
 {
-    public class PasswordCollection :IEnumerable
+    public class PasswordCollection : IEnumerable
     {
         private List<Password> _passwordCollection = new List<Password>();
         private PasswordValidator _validator = new PasswordValidator();
@@ -61,21 +61,19 @@ namespace WPP.Domain.Datastructures
                     _validator.ValidationPolicy.Validate(pword);
                 }
                 _hasBeenValidated = true;
+                _validCount = _passwordCollection.FindAll(p => p.Valid).Count;
+                _invalidCount = _passwordCollection.FindAll(p => !p.Valid).Count;
             }
         }
 
         public IEnumerable<Password> ReturnValidPasswords()
         {
-            IEnumerable<Password> temp = _passwordCollection.FindAll(p => p.Valid);
-            _validCount = temp.Count();
-            return temp;
+            return _passwordCollection.FindAll(p => p.Valid);
         }
 
         public IEnumerable<Password> ReturnInvalidPasswords()
         {
-            IEnumerable<Password> temp = _passwordCollection.FindAll(p => !p.Valid);
-            _invalidCount = temp.Count();
-            return temp;
+            return _passwordCollection.FindAll(p => !p.Valid);
         }
 
         public IEnumerator GetEnumerator()
