@@ -16,11 +16,15 @@ namespace WPP.Domain.Models
 
         public override void Validate(Password password)
         {
+            SetupValidation(password);
+            password.Valid = TestPasswordText(password.PasswordText);
+        }
+
+        private void SetupValidation(Password password)
+        {
             _indexOne = password.ValidationInfo.Minimum - 1;
             _indexTwo = password.ValidationInfo.Maximum - 1;
             _constraintChar = password.ValidationInfo.ConstraintCharacter;
-
-            password.Valid = TestPasswordText(password.PasswordText);
         }
 
         private bool TestPasswordText(string pwordText)

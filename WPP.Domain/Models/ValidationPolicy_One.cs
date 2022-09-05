@@ -15,12 +15,16 @@ namespace WPP.Domain.Models
 
         public override void Validate(Password password)
         {
+            SetupValidation(password);
+            password.Valid = TestPasswordText(password.PasswordText);
+        }
+
+        private void SetupValidation(Password password)
+        {
             _occcurrence = 0;
             _maxOccurernce = password.ValidationInfo.Maximum;
             _minOccurrence = password.ValidationInfo.Minimum;
             _constraintChar = password.ValidationInfo.ConstraintCharacter;
-
-            password.Valid = TestPasswordText(password.PasswordText);
         }
 
         private bool TestPasswordText(string pwordText)

@@ -11,7 +11,7 @@ namespace WPP.ConsoleTester
     {
         private static PasswordValidationParser _parser = new PasswordValidationParser();
         private static List<string> _fileContents = new List<string>();
-        private static string path = @"C:\Dania\PrgTek31-PasswordPolicy.txt";
+        private static string path = @"D:\Dania\PrgTek31-PasswordPolicy.txt";
         private static PasswordCollection _passwordCollection;
 
         static void Main(string[] args)

@@ -1,8 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model UploadedFile
+@{
+    ViewData["Title"] = "Home Page";    
 }
 
-<div class="text-center">
+<div class="text-center form-group" method="post">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<form asp-action="SubmitFile" enctype="multipart/form-data" method="post">
+
+    <input type="file" asp-for="@Model.File" accept=".txt"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<div>
+    <a asp-action="Reklame">Se Reklameside</a>
 </div>

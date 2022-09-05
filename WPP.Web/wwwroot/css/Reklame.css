@@ -1,0 +1,103 @@
+﻿h1 {
+    font-size: 75pt;
+    font-weight: bolder;
+    margin: 25px 0 0 0;
+}
+
+h2 {
+    font-size: 21pt;
+}
+
+.left-margin {
+    margin: 24px 0 0 0;
+}
+
+.right-margin {
+    margin: 11px 0 0 0;
+}
+
+.italic-text {
+    font-style: italic;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.normal-text {
+    font-weight: normal;
+}
+
+.big-text {
+    font-size: 23pt;
+}
+
+.company-name-text {
+    font-size: 38pt;
+}
+
+.regular-text {
+    font-size: 18pt;
+}
+
+.small-text {
+    font-size: 10pt;
+    line-height: 0;
+}
+
+.info-box-text {
+    text-align: center;
+}
+
+.red-color {
+    color: #f10f19;
+}
+
+.red-background {
+    background-color: #f10f19;
+}
+
+.grey-color {
+    color: #707777;
+}
+
+.grey-background {
+    background-color: #707777;
+}
+
+.white-color {
+    color: white;
+}
+
+.fb-icon {
+    height: 50px;
+    width: auto;
+    margin-left: 50px;
+    bottom: 0;
+    justify-content: center;
+    vertical-align: bottom;
+}
+
+.right-image {
+    height: 90px;
+    width: auto;
+}
+
+.grid-container {
+    height: 297mm;
+    width: 210mm;
+    display: grid;
+    grid-template-columns: 45% 5% 50%;
+    background: white;
+    background: linear-gradient(white, #01b565);
+}
+
+.grid-item-left {
+    grid-column: 1 / 2;
+    margin-left: 5%;
+}
+
+.grid-item-right {
+    grid-column: 3 / 4;
+    margin-right: 5%;
+}
