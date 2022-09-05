@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WPP.Domain\WPP.Domain.csproj" />
     <ProjectReference Include="..\WPP.Infrastructure\WPP.Infrastructure.csproj" />
   </ItemGroup>
 

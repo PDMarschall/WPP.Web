@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using WPP.Domain.Datastructures;
 using WPP.Domain.Models;
@@ -21,6 +22,19 @@ namespace WPP.Infrastructure
             }
 
             return passwordCollection;
+        }
+
+        public IEnumerable<string> ReadPasswordFile(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                List<string> fileContents = new List<string>();
+                while (!reader.EndOfStream)
+                {
+                    fileContents.Add(reader.ReadLine());
+                }
+                return fileContents;
+            }
         }
 
         private Password GetPasswordFromRegex(Match match)

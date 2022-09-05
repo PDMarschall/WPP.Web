@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using WPP.Domain.Datastructures;
+using WPP.Infrastructure;
 using WPP.Web.Models;
 
 namespace WPP.Web.Controllers
@@ -14,10 +16,12 @@ namespace WPP.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly PasswordValidationParser _parser;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, PasswordValidationParser parser)
         {
             _logger = logger;
+            _parser = parser;
         }
 
         public IActionResult Index()
@@ -28,14 +32,8 @@ namespace WPP.Web.Controllers
         [HttpPost]
         public IActionResult SubmitFile(UploadedFile uploadedFile)
         {
-            using (StreamReader reader = new StreamReader(uploadedFile.File.OpenReadStream()))
-            {
-                List<string> _fileContents = new List<string>();
-                while (!reader.EndOfStream)
-                {
-                    _fileContents.Add(reader.ReadLine());
-                }
-            }
+            IEnumerable<string> content = _parser.ReadPasswordFile(uploadedFile.File.OpenReadStream());
+            PasswordCollection test = _parser.ParsePasswordPolicyFile(content);            
             return View();
         }
 

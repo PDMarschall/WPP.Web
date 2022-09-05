@@ -7,13 +7,7 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 
-
 <form asp-action="SubmitFile" enctype="multipart/form-data" method="post">
-
     <input type="file" asp-for="@Model.File" accept=".txt"/>
     <input type="submit" value="Submit"/>
 </form>
-
-<div>
-    <a asp-action="Reklame">Se Reklameside</a>
-</div>
