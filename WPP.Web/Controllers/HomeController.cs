@@ -18,6 +18,9 @@ namespace WPP.Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly PasswordValidationParser _parser;
 
+        [BindProperty]
+        public PasswordCollection SubmittedPasswords { get; set; }
+
         public HomeController(ILogger<HomeController> logger, PasswordValidationParser parser)
         {
             _logger = logger;
@@ -30,10 +33,9 @@ namespace WPP.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult SubmitFile(UploadedFile uploadedFile)
+        public IActionResult SubmitFile(SubmittedFile file)
         {
-            IEnumerable<string> content = _parser.ReadPasswordFile(uploadedFile.File.OpenReadStream());
-            PasswordCollection test = _parser.ParsePasswordPolicyFile(content);            
+            ProcessFile(file);
             return View();
         }
 
@@ -51,6 +53,12 @@ namespace WPP.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private void ProcessFile(SubmittedFile submittedFile)
+        {
+            IEnumerable<string> content = _parser.ReadPasswordFile(submittedFile.Content.OpenReadStream());
+            SubmittedPasswords = _parser.ParsePasswordPolicyFile(content);
         }
     }
 }

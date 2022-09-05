@@ -1,4 +1,4 @@
-﻿@model UploadedFile
+﻿@model SubmittedFile
 @{
     ViewData["Title"] = "Home Page";    
 }
@@ -8,6 +8,6 @@
 </div>
 
 <form asp-action="SubmitFile" enctype="multipart/form-data" method="post">
-    <input type="file" asp-for="@Model.File" accept=".txt"/>
+    <input type="file" asp-for="@Model.Content" accept=".txt"/>
     <input type="submit" value="Submit"/>
 </form>

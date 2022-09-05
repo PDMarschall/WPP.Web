@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace WPP.Web.Models
 {
-    public class UploadedFile
+    public class SubmittedFile
     {
         [Required]
-        public IFormFile File { get; set; }
+        public IFormFile Content { get; set; }
     }
 }
