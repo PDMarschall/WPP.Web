@@ -12,7 +12,6 @@ namespace WPP.Domain.Models
         private int _minOccurrence;
         private char _constraintChar;
 
-
         public override void Validate(Password password)
         {
             SetupValidation(password);

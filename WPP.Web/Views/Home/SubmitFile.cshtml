@@ -1,7 +1,22 @@
-﻿@model PasswordCollection
-@using WPP.Domain.Datastructures
+﻿@using WPP.Domain.Models
 @{
-    ViewData["Title"] = "Submit File"; 
+    ViewData["Title"] = "Submit File";
 }
 
-<p></p>
+<h2>Valid Passwords</h2>
+<p>
+    @foreach (Password validpassword in ViewBag.ValidPasswords)
+    {
+        @Html.Raw(validpassword.ToFullString());
+        @Html.Raw("<br>");
+    }
+</p>
+
+<h2>Invalid Passwords</h2>
+<p>
+    @foreach (Password invalidpassword in ViewBag.InvalidPasswords)
+    {
+        @Html.Raw(invalidpassword.ToFullString());
+        @Html.Raw("<br>");
+    }
+</p>

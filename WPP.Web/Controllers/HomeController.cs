@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using WPP.Domain.Datastructures;
+using WPP.Domain.Models;
 using WPP.Infrastructure;
 using WPP.Web.Models;
 
@@ -36,6 +37,8 @@ namespace WPP.Web.Controllers
         public IActionResult SubmitFile(SubmittedFile file)
         {
             ProcessFile(file);
+            ViewBag.ValidPasswords = SubmittedPasswords.ReturnValidPasswords();
+            ViewBag.InvalidPasswords = SubmittedPasswords.ReturnInvalidPasswords();
             return View();
         }
 
@@ -59,6 +62,8 @@ namespace WPP.Web.Controllers
         {
             IEnumerable<string> content = _parser.ReadPasswordFile(submittedFile.Content.OpenReadStream());
             SubmittedPasswords = _parser.ParsePasswordPolicyFile(content);
+            SubmittedPasswords.SetValidationPolicy(new ValidationPolicy_One());
+            SubmittedPasswords.ValidateCollection();
         }
     }
 }
