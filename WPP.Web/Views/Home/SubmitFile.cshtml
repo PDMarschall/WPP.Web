@@ -2,21 +2,28 @@
 @{
     ViewData["Title"] = "Submit File";
 }
+<div class="grid-container">
+    <div class="grid-item-left">
+        <h2>Valid Passwords</h2>
+        <h3>Count: @ViewBag.ValidCount</h3>
+        <p>
+            @foreach (Password validpassword in ViewBag.ValidPasswords)
+            {
+                @Html.Raw(validpassword.ToFullString());
+                @Html.Raw("<br>");
+            }
+        </p>
+    </div>
 
-<h2>Valid Passwords</h2>
-<p>
-    @foreach (Password validpassword in ViewBag.ValidPasswords)
-    {
-        @Html.Raw(validpassword.ToFullString());
-        @Html.Raw("<br>");
-    }
-</p>
-
-<h2>Invalid Passwords</h2>
-<p>
-    @foreach (Password invalidpassword in ViewBag.InvalidPasswords)
-    {
-        @Html.Raw(invalidpassword.ToFullString());
-        @Html.Raw("<br>");
-    }
-</p>
+    <div class="grid-item-right">
+        <h2>Invalid Passwords</h2>
+        <h3>Count: @ViewBag.InvalidCount</h3>
+        <p>
+            @foreach (Password invalidpassword in ViewBag.InvalidPasswords)
+            {
+                @Html.Raw(invalidpassword.ToFullString());
+                @Html.Raw("<br>");
+            }
+        </p>
+    </div>
+</div>

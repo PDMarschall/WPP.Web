@@ -69,3 +69,18 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.grid-container {
+    height: auto;
+    width: auto;
+    display:grid;
+    grid-template-columns: 10% 40% 40% 10%;
+}
+
+.grid-left {
+    grid-column: 2/3;
+}
+
+.grid-right {
+    grid-column: 3/4;
+}

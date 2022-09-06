@@ -39,6 +39,9 @@ namespace WPP.Web.Controllers
             ProcessFile(file);
             ViewBag.ValidPasswords = SubmittedPasswords.ReturnValidPasswords();
             ViewBag.InvalidPasswords = SubmittedPasswords.ReturnInvalidPasswords();
+
+            ViewBag.ValidCount = SubmittedPasswords.ValidCount;
+            ViewBag.InvalidCount = SubmittedPasswords.InvalidCount;
             return View();
         }
 
