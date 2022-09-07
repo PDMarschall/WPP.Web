@@ -1,9 +1,13 @@
 ﻿@using WPP.Domain.Models
 @{
+    Layout = null;
     ViewData["Title"] = "Submit File";
 }
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
 <div class="grid-container">
-    <div class="grid-item-left">
+    <div class="grid-left">
         <h2>Valid Passwords</h2>
         <h3>Count: @ViewBag.ValidCount</h3>
         <p>
@@ -15,7 +19,7 @@
         </p>
     </div>
 
-    <div class="grid-item-right">
+    <div class="grid-right">
         <h2>Invalid Passwords</h2>
         <h3>Count: @ViewBag.InvalidCount</h3>
         <p>
