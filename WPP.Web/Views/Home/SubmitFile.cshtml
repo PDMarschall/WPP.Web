@@ -2,11 +2,15 @@
 @{
     ViewData["Title"] = "Submit File";
 }
-<head>
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
+
+<div>
+
+
+</div>
 <div class="grid-container">
     <div class="grid-left">
+        <label>Validation Policy 1:</label>
+        <input type="radio" name="validationpolicy" value="true" asp-action="SetPolicyOne" />        
         <h2>Valid Passwords</h2>
         <h3>Count: @ViewBag.ValidCount</h3>
         <p>
@@ -19,6 +23,8 @@
     </div>
 
     <div class="grid-right">
+        <label>Validation Policy 2:</label>
+        <input type="radio" name="validationpolicy" />        
         <h2>Invalid Passwords</h2>
         <h3>Count: @ViewBag.InvalidCount</h3>
         <p>
