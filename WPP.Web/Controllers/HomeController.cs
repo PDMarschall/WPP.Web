@@ -19,7 +19,6 @@ namespace WPP.Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly PasswordValidationParser _parser;
 
-        [BindProperty]
         public PasswordCollection SubmittedPasswords { get; set; }
 
         public HomeController(ILogger<HomeController> logger, PasswordValidationParser parser)
@@ -37,11 +36,12 @@ namespace WPP.Web.Controllers
         public IActionResult SubmitFile(SubmittedFile file)
         {
             ProcessFile(file);
-            ViewBag.ValidPasswords = SubmittedPasswords.ReturnValidPasswords();
-            ViewBag.InvalidPasswords = SubmittedPasswords.ReturnInvalidPasswords();
+            UpdatePasswordStrings();
+            return View();
+        }
 
-            ViewBag.ValidCount = SubmittedPasswords.ValidCount;
-            ViewBag.InvalidCount = SubmittedPasswords.InvalidCount;
+        public IActionResult ReviewFile(PasswordCollection passwordCollection)
+        {            
             return View();
         }
 
@@ -67,6 +67,14 @@ namespace WPP.Web.Controllers
             SubmittedPasswords = _parser.ParsePasswordPolicyFile(content);
             SubmittedPasswords.SetValidationPolicy(new ValidationPolicy_One());
             SubmittedPasswords.ValidateCollection();
+        }
+
+        private void UpdatePasswordStrings()
+        {
+            ViewBag.ValidPasswords = SubmittedPasswords.ReturnValidPasswords();
+            ViewBag.InvalidPasswords = SubmittedPasswords.ReturnInvalidPasswords();
+            ViewBag.ValidCount = SubmittedPasswords.ValidCount;
+            ViewBag.InvalidCount = SubmittedPasswords.InvalidCount;
         }
     }
 }
