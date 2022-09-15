@@ -4,23 +4,26 @@
 }
 
 
-<h1>Submit passwords and choose a validation policy:</h1>
+<h1>Submit password information</h1>
 <hr />
-<form asp-action="SubmitFile" enctype="multipart/form-data" method="post">
-    <input type="file" asp-for="@Model.Content" accept=".txt" />
+<div class="form-group">
+    <form asp-action="SubmitFile" enctype="multipart/form-data" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input class="form-control-file" type="file" id="passwordUploader" asp-for="@Model.Content" accept=".txt" />
+        <span asp-validation-for="@Model.Content" class="text-danger"></span>
 
-    <div>
-        <br />
-        <input type="radio" asp-for="@Model.PolicyID" name="PolicyID" id="PolicyOne" value="1" checked="checked" />
-        <label for="PolicyOne">Policy 1</label>
-    </div>
-    <div>
-        <input type="radio" asp-for="@Model.PolicyID" name="PolicyID" id="PolicyTwo" value="2" />
-        <label for="PolicyTwo">Policy 2</label>
-        <hr />
-    </div>
-    <div>
-        <input type="submit" value="Submit" />
-    </div>
-
-</form>
+        <div>
+            <br />
+            <input type="radio" asp-for="@Model.PolicyID" name="PolicyID" id="PolicyOne" value="1" checked="checked" />
+            <label for="PolicyOne">Policy 1</label>
+        </div>
+        <div>
+            <input type="radio" asp-for="@Model.PolicyID" name="PolicyID" id="PolicyTwo" value="2" />
+            <label for="PolicyTwo">Policy 2</label>
+            <hr />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</div>

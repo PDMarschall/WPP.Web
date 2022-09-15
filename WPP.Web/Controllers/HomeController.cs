@@ -35,15 +35,20 @@ namespace WPP.Web.Controllers
         [HttpPost]
         public IActionResult SubmitFile(SubmittedFile file)
         {
-            var test = Response;
-            ProcessFile(file);
-            ProcessPasswords(file.PolicyID);
-            UpdatePasswordStrings();
-            return View();
+            if (ModelState.IsValid)
+            {
+                ProcessFile(file);
+                ProcessPasswords(file.PolicyID);
+                UpdatePasswordStrings();
+                return View();
+            }
+
+            return RedirectToAction(nameof(Index));
+
         }
 
         public IActionResult ReviewFile(PasswordCollection passwordCollection)
-        {            
+        {
             return View();
         }
 

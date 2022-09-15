@@ -9,7 +9,7 @@ namespace WPP.Web.Models
 {
     public class SubmittedFile
     {
-        [Required]
+        [Required(ErrorMessage = "Please select a file to upload.")]
         public IFormFile Content { get; set; }
         public string PolicyID { get; set; }
     }
