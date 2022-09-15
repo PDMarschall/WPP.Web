@@ -47,9 +47,22 @@ namespace WPP.Domain.Datastructures
             _passwordCollection.Clear();
         }
 
-        public void SetValidationPolicy(IValidationPolicy valpol)
+        public void SetValidationPolicy(string policyId)
         {
-            _validator.ValidationPolicy = valpol;
+                switch (policyId)
+                {
+                    case "1":
+                        _validator.ValidationPolicy = new ValidationPolicy_One();
+                        break;
+
+                    case "2":
+                        _validator.ValidationPolicy = new ValidationPolicy_Two();
+                        break;
+
+                    default:
+                        break;
+                }
+
         }
 
         public void ValidateCollection()

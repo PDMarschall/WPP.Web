@@ -11,5 +11,6 @@ namespace WPP.Web.Models
     {
         [Required]
         public IFormFile Content { get; set; }
+        public string PolicyID { get; set; }
     }
 }

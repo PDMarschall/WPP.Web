@@ -1,13 +1,26 @@
 ﻿@model SubmittedFile
 @{
-    ViewData["Title"] = "Home Page";    
+    ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center form-group" method="post">
-    <h1 class="display-4">Welcome</h1>
-</div>
 
+<h1>Submit passwords and choose a validation policy:</h1>
+<hr />
 <form asp-action="SubmitFile" enctype="multipart/form-data" method="post">
-    <input type="file" asp-for="@Model.Content" accept=".txt"/>
-    <input type="submit" value="Submit"/>
+    <input type="file" asp-for="@Model.Content" accept=".txt" />
+
+    <div>
+        <br />
+        <input type="radio" asp-for="@Model.PolicyID" name="PolicyID" id="PolicyOne" value="1" checked="checked" />
+        <label for="PolicyOne">Policy 1</label>
+    </div>
+    <div>
+        <input type="radio" asp-for="@Model.PolicyID" name="PolicyID" id="PolicyTwo" value="2" />
+        <label for="PolicyTwo">Policy 2</label>
+        <hr />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+
 </form>
